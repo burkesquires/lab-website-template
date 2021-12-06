@@ -150,16 +150,8 @@ def cite_with_manubot(source):
         raise Exception("Manubot could not generate citation")
 
     # new citation info, with only needed info from Manubot
-    citation = {}
+    citation = {'id': id, 'title': manubot.get("title", ""), 'authors': []}
 
-    # original id
-    citation["id"] = id
-
-    # title
-    citation["title"] = manubot.get("title", "")
-
-    # authors
-    citation["authors"] = []
     for author in manubot.get("author", []):
         given = author.get("given", "")
         family = author.get("family", "")
